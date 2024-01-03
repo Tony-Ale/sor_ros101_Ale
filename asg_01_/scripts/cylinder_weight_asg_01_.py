@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import Float64
+from asg_01_.msg import Weight_asg_01_
 
 from math import pi
 
@@ -36,10 +37,11 @@ rospy.init_node("cylinder_weight")
 rospy.Subscriber("/density", Float64, density_callback)
 rospy.Subscriber("/height", Float64, height_callback)
 rospy.Subscriber("/radius_squared", Float64, radius_squared_callback)
-pub = rospy.Publisher("/weight", Float64, queue_size=10)
+pub = rospy.Publisher("/weight", Weight_asg_01_, queue_size=10)
 
 def calculate():
 	if density_found and  height_found and radius_squared_found:
+		msg = Weight_asg_01_()
 		weight = pi*radius_squared*height*density*10
 		pub.publish(weight)
 

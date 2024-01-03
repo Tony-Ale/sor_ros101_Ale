@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(ros_tutorial)
+project(asg_01_)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -50,7 +50,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
-  Cylinder.msg
+  Cylinder_asg_01_.msg
+  Weight_asg_01_.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -207,8 +208,8 @@ include_directories(
 
 catkin_install_python(
 	PROGRAMS
-	scripts/cylinder_input.py
-	scripts/radius_squarer.py
-	scripts/cylinder_calc.py
-	scripts/cylinder_weight.py
+	scripts/cylinder_input_asg_01_.py
+	scripts/radius_squarer_asg_01_.py
+	scripts/cylinder_calc_asg_01_.py
+	scripts/cylinder_weight_asg_01_.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

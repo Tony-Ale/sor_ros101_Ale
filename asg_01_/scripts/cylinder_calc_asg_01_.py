@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import Float64
-from ros_tutorial.msg import Cylinder
+from asg_01_.msg import Cylinder_asg_01_
 
 from math import pi
 
@@ -39,11 +39,11 @@ rospy.init_node("cylinder_calc")
 rospy.Subscriber("/radius", Float64, radius_callback)
 rospy.Subscriber("/radius_squared", Float64, radius_squared_callback)
 rospy.Subscriber("/height", Float64, height_callback)
-pub = rospy.Publisher("/cylinder", Cylinder, queue_size=10)
+pub = rospy.Publisher("/cylinder", Cylinder_asg_01_, queue_size=10)
 
 def calculate():
 	if radius_found and radius_squared_found and height_found:
-		msg = Cylinder()
+		msg = Cylinder_asg_01_()
 		msg.volume = pi*radius_squared*height
 		msg.surface_area = 2*pi*(radius*height+radius_squared)
 		pub.publish(msg)

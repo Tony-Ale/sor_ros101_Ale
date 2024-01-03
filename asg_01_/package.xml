@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ros_tutorial</name>
+  <name>asg_01_</name>
   <version>0.0.0</version>
-  <description>The ros_tutorial package</description>
+  <description>The asg_01_ package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

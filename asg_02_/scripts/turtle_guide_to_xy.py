@@ -7,7 +7,7 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Float64
 
 
-rospy.init_node('move_turtle_to_target')
+rospy.init_node('move_turtle_to_target', log_level=rospy.DEBUG)
 
 x = 0
 y = 0
@@ -36,6 +36,8 @@ def get_goal():
     y_target = float(input("set y location: "))
     tolerance = float(input("set tolerance: "))
     
+    rospy.loginfo("Moving to (%f, %f)", x_target, y_target)
+    
     return [x_target, y_target, tolerance]
 
 def pose_goal_angle(goal_data):
@@ -62,6 +64,7 @@ msg = Twist()
 goal_data = get_goal()
 while distance(goal_data) >= float(goal_data[-1]):
 
+    rospy.logdebug("current position: (%f, %f)", x, y)
     #Linear velocity control
     msg.linear.x = linear_vel(goal_data)
     msg.linear.y = 0 
@@ -77,6 +80,7 @@ while distance(goal_data) >= float(goal_data[-1]):
 msg.linear.x = 0
 msg.angular.z = 0
 publisher.publish(msg)
+rospy.loginfo("Target Reached")
 rospy.spin()
 
 
